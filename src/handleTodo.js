@@ -57,7 +57,8 @@ todo5.setDueDate("2024-12-15");
 todo5.setPriority("Medium");
 todo5.setIsComplete(false);
 
-handleTask.addTodo(todo1);
+handleTask.addTodo(todo1, todo2, todo3, todo4, todo5);
 
 // Logging the todos
+handleTask.removeTodo(todo2.todoId);
 console.log(handleTask.getTodos());
