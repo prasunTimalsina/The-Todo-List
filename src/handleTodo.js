@@ -1,5 +1,5 @@
-import Todo from "./todo.js";
-import Project from "./projects.js";
+import Todo from "./module.js";
+import Project from "./module.js";
 export default class HandleTodos {
   constructor() {
     this.todos = [];

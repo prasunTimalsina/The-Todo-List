@@ -1,12 +1,31 @@
 "use strict";
+"use strict";
 import nid from "nid";
 
-export default class Todo {
-  constructor() {
+// Project constructor
+const mynid = nid({ length: 4 });
+export class Project {
+  constructor(title) {
+    this.projectId = mynid();
+    this.title = title;
+  }
+
+  getProjectId() {
+    return this.projectId;
+  }
+
+  getProjectTitle() {
+    return this.title;
+  }
+}
+
+export class Todo {
+  constructor(title, description, dueDate, priority) {
     this.todoId = nid();
-    this.title;
-    this.dueDate;
-    this.priority;
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
     this.isComplete;
     this.project = null;
   }
@@ -28,10 +47,6 @@ export default class Todo {
     return this.title;
   }
 
-  setName(title) {
-    this.title = title;
-  }
-
   getIsComplete() {
     return this.isComplete;
   }
@@ -48,23 +63,11 @@ export default class Todo {
     return this.description;
   }
 
-  setDescription(description) {
-    this.description = description;
-  }
-
   getPriority() {
     return this.priority;
   }
 
-  setPriority(priority) {
-    this.priority = priority;
-  }
-
   getDueDate() {
     return this.date;
-  }
-
-  setDueDate(date) {
-    this.date = new Date(date).toDateString();
   }
 }
