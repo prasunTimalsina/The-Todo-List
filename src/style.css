@@ -51,17 +51,14 @@ body {
   width: 50px;
 }
 
-.search-bar {
-  width: 18rem;
-  display: flex;
-  gap: 10px;
-}
-
 .search-icon {
   width: 20px;
 }
 
 .search-bar {
+  width: 90%;
+  display: flex;
+  gap: 10px;
   background-color: #f8f8f8;
   height: 2em;
   border-radius: 50px;
@@ -87,6 +84,14 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  padding: 0.2em;
+  border-radius: 50px;
+}
+
+.nav-links div:hover {
+  cursor: pointer;
+
+  background-color: #f5f7fd;
 }
 .nav-links svg {
   width: 25px;

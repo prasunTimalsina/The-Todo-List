@@ -4,7 +4,7 @@ import nid from "nid";
 
 // Project constructor
 const mynid = nid({ length: 4 });
-export class Project {
+class Project {
   constructor(title) {
     this.projectId = mynid();
     this.title = title;
@@ -19,7 +19,7 @@ export class Project {
   }
 }
 
-export class Todo {
+class Todo {
   constructor(title, description, dueDate, priority) {
     this.todoId = nid();
     this.title = title;
@@ -71,3 +71,5 @@ export class Todo {
     return this.date;
   }
 }
+
+export { Todo, Project };
