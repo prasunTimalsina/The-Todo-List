@@ -1,5 +1,6 @@
 "use strict";
 import nid from "nid";
+
 export default class Todo {
   constructor() {
     this.todoId = nid();
@@ -64,6 +65,6 @@ export default class Todo {
   }
 
   setDueDate(date) {
-    this.date = date;
+    this.date = new Date(date).toDateString();
   }
 }

@@ -5,7 +5,101 @@
   font-style: normal;
 }
 
-h1 {
-  color: red;
+a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Makes the link inherit the text color */
+  font: inherit; /* Ensures font family, size, and weight are inherited */
+  background: none; /* Removes background if any */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+  border: none; /* Removes borders */
+  outline: none; /* Removes focus outline */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Roboto";
+}
+
+body {
+  display: flex;
+}
+
+.sidebar {
+  width: 25%;
+  height: 100vh;
+  border-right: 1px solid #ccc;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.task-remaining {
+  color: #444;
+  font-size: 0.8rem;
+}
+
+.profile-pic {
+  width: 50px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-icon {
+  width: 20px;
+}
+
+.search-bar {
+  background-color: #f8f8f8;
+  height: 2em;
+  border-radius: 50px;
+  padding: 4px;
+}
+.search-bar input {
+  background-color: #f8f8f8;
+  border: none;
+}
+.search-bar input:focus {
+  outline: none;
+  background-color: #f5f7fd;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.nav-links div {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.nav-links svg {
+  width: 25px;
+}
+
+.add-projects {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.add-projects svg {
+  width: 25px;
+}
+
+.contents {
+  padding: 1em;
 }
