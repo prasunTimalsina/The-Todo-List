@@ -39,52 +39,32 @@ export default class HandleTodos {
   getProject() {
     return this.projects;
   }
+
+  addTodoToProject() {
+    this.todos.forEach((todo) => {
+      todo.project.todo = todo;
+    });
+  }
 }
 
 const project1 = new Project("Timeless");
 const handleTask = new HandleTodos();
 
-const todo1 = new Todo(
-  "Buy groceries",
-  "Get milk, eggs, bread, and fruits",
-  "2024-12-10",
-  "High"
-);
+const todo1 = new Todo("Buy groceries", "2024-12-10", "High");
 
-todo1.setIsComplete(false);
 todo1.setProject(project1);
 
-const todo2 = new Todo("Workout", "Go for a 5km run", "2024-12-08", "Medium");
+const todo2 = new Todo("Workout", "2024-12-08", "Medium");
 
-todo2.setIsComplete(false);
 todo2.setProject(project1);
 
-const todo3 = new Todo(
-  "Study JavaScript",
-  "Complete the ES6 modules tutorial",
-  "2024-12-09",
-  "High"
-);
-todo3.setIsComplete(false);
+const todo3 = new Todo("Study JavaScript", "2024-12-09", "High");
+
 todo3.setProject(project1);
 
-const todo4 = new Todo(
-  "Clean the house",
-  "Vacuum, dusting, and organize the living room",
-  "2024-12-11",
-  "Low"
-);
+const todo4 = new Todo("Clean the house", "2024-12-11", "Low");
 
-todo4.setIsComplete(false);
-
-const todo5 = new Todo(
-  "Plan weekend trip",
-  "Decide on destination and book accommodations",
-  "2024-12-15",
-  "Medium"
-);
-
-todo5.setIsComplete(false);
+const todo5 = new Todo("Plan weekend trip", "2024-12-15", "Medium");
 
 handleTask.addTodo(todo1, todo2, todo3, todo4, todo5);
 

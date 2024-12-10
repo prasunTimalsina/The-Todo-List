@@ -8,6 +8,7 @@ class Project {
   constructor(title) {
     this.projectId = mynid();
     this.title = title;
+    this.todo;
   }
 
   getProjectId() {
@@ -20,14 +21,14 @@ class Project {
 }
 
 class Todo {
-  constructor(title, description, dueDate, priority) {
+  constructor(title, dueDate, priority) {
     this.todoId = nid();
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.isComplete;
-    this.project = null;
+    this.isComplete = false;
+    this.project;
   }
 
   // Getters and Setters
@@ -36,6 +37,7 @@ class Todo {
   }
 
   setProject(project) {
+    project.todo = this;
     this.project = project;
   }
 
@@ -57,10 +59,6 @@ class Todo {
 
   flipIsComplete() {
     this.isComplete = !this.isComplete;
-  }
-
-  getDescription() {
-    return this.description;
   }
 
   getPriority() {
