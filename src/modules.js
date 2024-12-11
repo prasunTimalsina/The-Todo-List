@@ -24,7 +24,7 @@ class Todo {
   constructor(title, dueDate, priority) {
     this.todoId = nid();
     this.title = title;
-    this.description = description;
+
     this.dueDate = dueDate;
     this.priority = priority;
     this.isComplete = false;

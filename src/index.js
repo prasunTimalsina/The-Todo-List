@@ -2,6 +2,6 @@
 
 import "./style.css";
 import html from "./template.html";
-import { addTodo } from "./dom.js";
+import { addTodo, hideModal } from "./dom.js";
 
-addTodo();
+hideModal();

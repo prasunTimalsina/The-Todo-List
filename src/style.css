@@ -149,17 +149,18 @@ body {
 
 /* Add Task Form */
 
+/* Modal Background */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensures it floats above other content */
+  z-index: 1000;
 }
 
 /* Add Task Form */
@@ -203,13 +204,11 @@ body {
   cursor: pointer;
 }
 
-/* Submit Button */
 .add-task-form button[type="submit"] {
   background: #007bff;
   color: white;
 }
 
-/* Cancel Button */
 .add-task-form .close-btn {
   background: #ccc;
   color: black;
