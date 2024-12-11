@@ -146,3 +146,72 @@ body {
   margin-left: auto;
   margin-top: -20px;
 }
+
+/* Add Task Form */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures it floats above other content */
+}
+
+/* Add Task Form */
+.add-task-form {
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.add-task-form h2 {
+  margin-bottom: 1em;
+}
+
+.add-task-form label {
+  display: block;
+  text-align: left;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.add-task-form input,
+.add-task-form select {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.add-task-form button {
+  margin-top: 1.5em;
+  padding: 0.7em 1.5em;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.add-task-form button[type="submit"] {
+  background: #007bff;
+  color: white;
+}
+
+/* Cancel Button */
+.add-task-form .close-btn {
+  background: #ccc;
+  color: black;
+  margin-left: 1em;
+}

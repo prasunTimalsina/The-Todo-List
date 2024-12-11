@@ -3,9 +3,11 @@
 //elements
 const main = document.querySelector("main");
 
-main.textContent = "alkdsfjalsdkfj";
+const ProjectContainer = `
 
-const todo = `
+`;
+
+const todoElement = `
    <div class="todo">
               <div>
                 <input type="checkbox" name="Iscomplete" id="Iscompleted" />
@@ -30,3 +32,5 @@ const todo = `
             </div>
           </div>
 `;
+
+export { todoElement, ProjectContainer };
