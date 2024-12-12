@@ -214,3 +214,56 @@ body {
   color: black;
   margin-left: 1em;
 }
+
+/* Add Project Form */
+.add-project-form {
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.add-project-form h2 {
+  margin-bottom: 1em;
+}
+
+.add-project-form label {
+  display: block;
+  text-align: left;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.add-project-form input {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.add-project-form button {
+  margin-top: 1.5em;
+  padding: 0.7em 1.5em;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.add-project-form button[type="submit"] {
+  background: #007bff;
+  color: white;
+}
+
+/* Cancel Button */
+.add-project-form .close-btn {
+  background: #ccc;
+  color: black;
+  margin-left: 1em;
+}

@@ -7,7 +7,34 @@ const ProjectContainer = `
 
 `;
 
-const CreatetodoElement = function (title, dueDate, priority) {
+const AddTaskFormUI = `
+<form class="add-task-form" novalidate >
+      <h2>Create a Task</h2>
+  
+      <label for="task-title">Title:</label>
+      <input type="text" id="task-title" name="title" placeholder="Enter task title" required />
+  
+      <label for="task-date">Date:</label>
+      <input type="date" id="task-date" name="date" required />
+  
+      <label for="task-priority">Priority:</label>
+      <select id="task-priority" name="priority" required>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+  
+      <label for="task-project">Project:</label>
+      <select id="task-project" name="project" required>
+        <!-- Options will be dynamically generated here -->
+      </select>
+  
+      <button class="submit-task" type="submit">Submit</button>
+      <button type="button" class="close-btn">Cancel</button>
+    </form>
+`;
+
+const CreatetodoEl = function (title, dueDate, priority) {
   return `
    <div class="todo">
               <div>
@@ -34,7 +61,7 @@ const CreatetodoElement = function (title, dueDate, priority) {
           </div>
 `;
 };
-const addTaskFormElement = `
+const addTaskFormEl = `
 <form  class="add-task-form">
         <h2>Create a Task</h2>
         <label for="task-title">Title:</label>
@@ -56,3 +83,5 @@ const addTaskFormElement = `
     </div>
     </form>
 `;
+
+export { addTaskFormEl, CreatetodoEl };
