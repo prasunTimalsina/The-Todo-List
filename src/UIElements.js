@@ -84,4 +84,10 @@ const addTaskFormEl = `
     </form>
 `;
 
-export { addTaskFormEl, CreatetodoEl };
+const createProjectOptionEl = function (title) {
+  return `
+  <option value="${title}">${title}</option>
+`;
+};
+
+export { addTaskFormEl, CreatetodoEl, createProjectOptionEl };

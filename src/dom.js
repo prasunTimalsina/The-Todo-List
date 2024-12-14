@@ -1,17 +1,26 @@
 "use strict";
 
-import { Todo } from "./modules";
+import { Todo, Project } from "./modules";
 import HandleTodos from "./handleTodos";
-import { addTaskFormEl, CreatetodoEl } from "./UIElements";
+import {
+  addTaskFormEl,
+  createProjectOptionEl,
+  CreatetodoEl,
+} from "./UIElements";
 const handleTodos = new HandleTodos();
 ///////////////elements////////////////
 
 const modal = document.querySelector(".modal");
 const addTaskBtn = document.querySelector(".add-task");
 const addTaskForm = document.querySelector(".add-task-form");
+const projectOption = document.getElementById("task-project");
+const addProjectBtn = document.querySelector(".add-projects");
+const addProjectForm = document.querySelector(".add-project-form");
 const submitTaskBtn = document.querySelector(".submit-task");
-const closeBtn = document.querySelector(".close-btn");
+const submitProjectBtn = document.querySelector(".submit-project");
+const closeBtn = document.querySelectorAll(".close-btn");
 const todosContainer = document.querySelector(".todos");
+
 ///////////////Fuctions/////////////////////////
 
 ///Modal related function
@@ -57,15 +66,26 @@ const renderTodos = function () {
   todosContainer.textContent = ``;
   const todos = handleTodos.getTodos();
   todos.forEach((todo) => {
-    const todoEl = addTaskFormEl(todo.title, todo.dueDate, todo.priority);
+    const todoEl = CreatetodoEl(todo.title, todo.dueDate, todo.priority);
     todosContainer.insertAdjacentHTML("beforeend", todoEl);
   });
 };
 
 const renderTaskForm = function () {
-  modal.textContent = ``;
-  const formEl = addTaskFormEl;
-  modal.insertAdjacent;
+  if (handleTodos.getProject() != 0) {
+    addTaskForm.style.display = "";
+    showModal();
+    addProjectForm.style.display = "none";
+    console.log(projectOption);
+    handleTodos.getProject().forEach((project) => {
+      projectOption.insertAdjacentHTML(
+        "beforeend",
+        createProjectOptionEl(project.getProjectTitle())
+      );
+    });
+  } else {
+    alert("Add some project first");
+  }
 };
 //form related task
 
@@ -73,11 +93,18 @@ const renderTaskForm = function () {
 
 ////Task form related event
 addTaskBtn.addEventListener("click", function () {
-  showModal();
+  renderTaskForm();
 });
 
-closeBtn.addEventListener("click", function () {
-  hideModal();
+addProjectBtn.addEventListener("click", function () {
+  showModal();
+  addTaskForm.style.display = "none";
+});
+
+closeBtn.forEach((clsbtn) => {
+  clsbtn.addEventListener("click", function () {
+    hideModal();
+  });
 });
 
 submitTaskBtn.addEventListener("click", function (event) {
@@ -96,6 +123,16 @@ submitTaskBtn.addEventListener("click", function (event) {
     alert("Fill the form correctly");
     clearAddTaskFormFields();
   }
+});
+
+submitProjectBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  const titleEl = document.getElementById("project-title");
+  const title = titleEl.value;
+  handleTodos.addProject(new Project(title));
+  console.log(handleTodos.getProject());
+  titleEl.value = "";
+  hideModal();
 });
 
 export { hideModal, showModal };
