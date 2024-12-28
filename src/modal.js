@@ -28,7 +28,7 @@ export const createTask = function (taskTitle, dueDate, projectName = null) {
     }),
     taskTitle,
     dueDate,
-    completed: true,
+    completed: false,
   };
   //add todo to state
   state.todos.push(todo);
@@ -45,5 +45,3 @@ export const createTask = function (taskTitle, dueDate, projectName = null) {
 
   return todo;
 };
-
-const project1 = createProject("Homework");
