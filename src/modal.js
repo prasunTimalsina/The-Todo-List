@@ -1,7 +1,6 @@
 import generateUniqueId from "generate-unique-id";
 import { format, compareAsc } from "date-fns";
 export const state = {
-  todos: [],
   projects: [],
 };
 
@@ -19,7 +18,7 @@ export const createProject = function (title) {
   return project;
 };
 
-export const createTask = function (taskTitle, dueDate, projectName = null) {
+export const createTask = function (taskTitle, dueDate, projectName) {
   projectName = projectName.toLowerCase();
   const todo = {
     id: generateUniqueId({
@@ -30,8 +29,7 @@ export const createTask = function (taskTitle, dueDate, projectName = null) {
     dueDate,
     completed: false,
   };
-  //add todo to state
-  state.todos.push(todo);
+
   if (projectName) {
     const index = state.projects.findIndex(
       (project) => project.title == projectName
@@ -44,4 +42,25 @@ export const createTask = function (taskTitle, dueDate, projectName = null) {
   }
 
   return todo;
+};
+
+export const deleteTodo = function (projectName, Id) {
+  const projects = state.projects;
+
+  //delete todo from project
+  const projectIndex = state.projects.findIndex(
+    (project) => project.title === projectName
+  );
+
+  const todoIndexInProject = projects[projectIndex].todos.findIndex(
+    (todo) => todo.id === Id
+  );
+  projects[projectIndex].todos.splice(todoIndexInProject, 1);
+};
+
+export const deleteProject = function (projectName) {
+  const projectIndex = state.projects.findIndex(
+    (project) => project.title === projectName
+  );
+  state.projects.splice(projectIndex, 1);
 };
