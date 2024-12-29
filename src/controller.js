@@ -55,6 +55,12 @@ const controlDeleteProject = function (projectName) {
 
   //re render project-list
   sidebarProjectView.render(modal.state.projects);
+
+  //render projects
+  projectView.render(modal.state.projects);
+
+  // Re-attach event handlers for delete buttons
+  todoView._addHandlerDelete(controlDeleteTodo);
 };
 
 const init = function () {
