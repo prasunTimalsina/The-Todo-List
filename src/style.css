@@ -41,12 +41,13 @@ li {
 
 body {
   display: flex;
+  position: relative;
 }
 
 .sidebar {
   width: 25%;
   /*   height: 100vh; */
-  border-right: 1px solid #ccc;
+
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -139,6 +140,8 @@ body {
 }
 
 .contents {
+  min-height: 100vh;
+  border-left: 1px solid #ccc;
   width: 100%;
   padding: 1em;
 }

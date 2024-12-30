@@ -1,4 +1,4 @@
-import { format, compareAsc, isPast, isFuture } from "date-fns";
+import { format, compareAsc, isPast, isFuture, compareDesc } from "date-fns";
 import * as modal from "../modal";
 import View from "./View";
 class TodoView extends View {
@@ -6,7 +6,7 @@ class TodoView extends View {
 
   _addHandlerDelete(handler) {
     const todosElements = document.querySelectorAll(".todos");
-    console.log(todosElements);
+
     todosElements.forEach((todoEl) =>
       todoEl.addEventListener("click", function (e) {
         const deleteBtn = e.target.closest(".delete-btn");
@@ -24,6 +24,21 @@ class TodoView extends View {
     );
   }
 
+  addHandlerCompleteTask(handler) {
+    const todosElements = document.querySelectorAll(".todos");
+
+    todosElements.forEach((todoEl) =>
+      todoEl.addEventListener("click", function (e) {
+        const completeInput = e.target.closest("#completeCheck");
+        if (!completeInput) return;
+        const { taskId } = completeInput.closest(".todo").dataset;
+        console.log(taskId);
+        console.log(modal.state.projects);
+        handler(taskId);
+      })
+    );
+  }
+
   _checkOverdue(date) {
     if (isPast(date)) return true;
     else return false;
@@ -33,9 +48,13 @@ class TodoView extends View {
     return `${this._data
       .map(
         (todo) => `
-         <li class="todo  ${todo.completed ? "completed" : ""}"  >
+         <li class="todo  ${todo.completed ? "completed" : ""}" data-task-Id="${
+          todo.id
+        }" >
             <div >
-              <input type="checkbox"  ${todo.completed ? "checked" : ""}>
+              <input id = "completeCheck" type="checkbox"  ${
+                todo.completed ? "checked" : ""
+              }>
               <p class="todo-title">${todo.taskTitle}</p>
             </div>
             <div class="todo-due">

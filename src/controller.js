@@ -13,6 +13,8 @@ const reRenderProject = function () {
 
   // Re-attach event handlers for delete buttons
   todoView._addHandlerDelete(controlDeleteTodo);
+
+  todoView.addHandlerCompleteTask(controlCompleteTodo);
 };
 
 const reRenderProjectList = function () {
@@ -83,11 +85,24 @@ const controlDeleteProject = function (projectName) {
   todoView._addHandlerDelete(controlDeleteTodo);
 };
 
+const controlCompleteTodo = function (todoId) {
+  modal.state.projects.forEach((project) => {
+    project.todos.forEach((todo) => {
+      if (todo.id === todoId) {
+        todo.completed = !todo.completed;
+      }
+    });
+  });
+
+  reRenderProject();
+};
+
 const init = function () {
   controlTodo();
   todoView._addHandlerDelete(controlDeleteTodo);
   sidebarProjectView._addHandlerDeleteProject(controlDeleteProject);
   addProjectView.addHandlerAddProject(controlAddProject);
+  todoView.addHandlerCompleteTask(controlCompleteTodo);
 };
 
 init();

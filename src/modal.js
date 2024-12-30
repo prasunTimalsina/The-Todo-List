@@ -8,7 +8,7 @@ export const createProject = function (title) {
   title = title.toLowerCase();
   const project = {
     id: generateUniqueId({
-      length: 9,
+      length: 6,
       useLetters: false,
     }),
     title,
@@ -22,7 +22,7 @@ export const createTask = function (taskTitle, dueDate, projectName) {
   projectName = projectName.toLowerCase();
   const todo = {
     id: generateUniqueId({
-      length: 4,
+      length: 9,
       useLetters: false,
     }),
     taskTitle,
