@@ -5,6 +5,7 @@ import todoView from "./view/todoView";
 import projectView from "./view/projectView.js";
 import sidebarProjectView from "./view/sidebarProjectView.js";
 import addProjectView from "./view/addProjectView.js";
+import addTaskView from "./view/addTaskView.js";
 import { ckb } from "date-fns/locale";
 
 const reRenderProject = function () {
@@ -22,31 +23,15 @@ const reRenderProjectList = function () {
   sidebarProjectView.render(modal.state.projects);
 };
 
-const controlTodo = function () {
-  const date = format(new Date(), "MM/dd/yyyy");
-
-  // Create Projects
-  const College = modal.createProject("College");
-  const Work = modal.createProject("Work");
-
-  // Add Tasks to College Project
-  modal.createTask("Do math homework", "12/02/2020", "college");
-  modal.createTask("Prepare for Physics exam", "12/15/2020", "college");
-
-  // Add Tasks to Work Project
-  modal.createTask("Finish project report", "12/05/2020", "work");
-  modal.createTask("Prepare presentation", "12/08/2020", "work");
-
-  projectView.render(modal.state.projects);
-
-  /* 
-  console.log(modal.state.todos[0]);
-  todoView.render(modal.state.todos); */
+const controlAddTodo = function (title, dueDate, project) {
+  if (modal.state.projects.length === 0) alert("Add some project first");
+  modal.createTask(title, dueDate, project);
+  reRenderProject();
 };
 
 const controlAddProject = function (projectName) {
   const newProject = modal.createProject(projectName);
-
+  addTaskView.addProjectOption(modal.state.projects);
   reRenderProject();
   reRenderProjectList();
 };
@@ -78,11 +63,7 @@ const controlDeleteProject = function (projectName) {
 
   reRenderProjectList();
 
-  //render projects
-  projectView.render(modal.state.projects);
-
-  // Re-attach event handlers for delete buttons
-  todoView._addHandlerDelete(controlDeleteTodo);
+  reRenderProject();
 };
 
 const controlCompleteTodo = function (todoId) {
@@ -97,12 +78,20 @@ const controlCompleteTodo = function (todoId) {
   reRenderProject();
 };
 
+const controlShowForm = function () {
+  if (modal.state.projects.length === 0) {
+    alert("Add projects first");
+    return false;
+  }
+  return true;
+};
+
 const init = function () {
-  controlTodo();
   todoView._addHandlerDelete(controlDeleteTodo);
   sidebarProjectView._addHandlerDeleteProject(controlDeleteProject);
   addProjectView.addHandlerAddProject(controlAddProject);
   todoView.addHandlerCompleteTask(controlCompleteTodo);
+  addTaskView._addHandlerAddTask(controlAddTodo);
+  addTaskView._addHandlerShowForm(controlShowForm);
 };
-
 init();
