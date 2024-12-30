@@ -54,7 +54,7 @@
           </svg>
           <p style="font-weight: 500">Add Task</p>
         </li>
-        <li class="all-task">
+        <!--         <li class="all-task">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -121,7 +121,7 @@
             />
           </svg>
           <a href="">Completed</a>
-        </li>
+        </li> -->
       </ul>
 
       <div class="projects-container">
@@ -309,54 +309,52 @@
     </main>
 
     <div class="modal hidden">
-      <div class="modal">
-        <form class="add-task-form" novalidate>
-          <h2>Create a Task</h2>
+      <form class="add-task-form hidden" novalidate>
+        <h2>Create a Task</h2>
 
-          <label for="task-title">Title:</label>
-          <input
-            type="text"
-            id="task-title"
-            name="title"
-            placeholder="Enter task title"
-            required
-          />
+        <label for="task-title">Title:</label>
+        <input
+          type="text"
+          id="task-title"
+          name="title"
+          placeholder="Enter task title"
+          required
+        />
 
-          <label for="task-date">Date:</label>
-          <input type="date" id="task-date" name="date" required />
+        <label for="task-date">Date:</label>
+        <input type="date" id="task-date" name="date" required />
 
-          <label for="task-priority">Priority:</label>
-          <select id="task-priority" name="priority" required>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
+        <label for="task-priority">Priority:</label>
+        <select id="task-priority" name="priority" required>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
 
-          <label for="task-project">Project:</label>
-          <select id="task-project" name="project">
-            <!-- Options will be dynamically generated here -->
-          </select>
+        <label for="task-project">Project:</label>
+        <select id="task-project" name="project">
+          <!-- Options will be dynamically generated here -->
+        </select>
 
-          <button class="submit-task" type="submit">Submit</button>
-          <button type="button" class="close-btn">Cancel</button>
-        </form>
+        <button class="submit-task" type="submit">Submit</button>
+        <button type="button" class="close-btn">Cancel</button>
+      </form>
 
-        <form class="add-project-form hidden">
-          <h2>Create a Project</h2>
+      <form class="add-project-form hidden">
+        <h2>Create a Project</h2>
 
-          <label for="project-title">Project Title:</label>
-          <input
-            type="text"
-            id="project-title"
-            name="title"
-            placeholder="Enter project title"
-            required
-          />
+        <label for="project-title">Project Title:</label>
+        <input
+          type="text"
+          id="project-title"
+          name="title"
+          placeholder="Enter project title"
+          required
+        />
 
-          <button class="submit-project" type="submit">Submit</button>
-          <button type="button" class="close-btn">Cancel</button>
-        </form>
-      </div>
+        <button class="submit-project" type="submit">Submit</button>
+        <button type="button" class="close-btn">Cancel</button>
+      </form>
     </div>
   </body>
 </html>

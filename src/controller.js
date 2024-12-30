@@ -4,7 +4,21 @@ import * as modal from "./modal.js";
 import todoView from "./view/todoView";
 import projectView from "./view/projectView.js";
 import sidebarProjectView from "./view/sidebarProjectView.js";
+import addProjectView from "./view/addProjectView.js";
 import { ckb } from "date-fns/locale";
+
+const reRenderProject = function () {
+  //render projects
+  projectView.render(modal.state.projects);
+
+  // Re-attach event handlers for delete buttons
+  todoView._addHandlerDelete(controlDeleteTodo);
+};
+
+const reRenderProjectList = function () {
+  //re render project-list
+  sidebarProjectView.render(modal.state.projects);
+};
 
 const controlTodo = function () {
   const date = format(new Date(), "MM/dd/yyyy");
@@ -26,6 +40,13 @@ const controlTodo = function () {
   /* 
   console.log(modal.state.todos[0]);
   todoView.render(modal.state.todos); */
+};
+
+const controlAddProject = function (projectName) {
+  const newProject = modal.createProject(projectName);
+
+  reRenderProject();
+  reRenderProjectList();
 };
 
 const controlDeleteTodo = function (Id, projectName) {
@@ -53,8 +74,7 @@ const controlDeleteProject = function (projectName) {
   modal.state.projects.splice(index, 1);
   console.log(modal.state.projects);
 
-  //re render project-list
-  sidebarProjectView.render(modal.state.projects);
+  reRenderProjectList();
 
   //render projects
   projectView.render(modal.state.projects);
@@ -67,6 +87,7 @@ const init = function () {
   controlTodo();
   todoView._addHandlerDelete(controlDeleteTodo);
   sidebarProjectView._addHandlerDeleteProject(controlDeleteProject);
+  addProjectView.addHandlerAddProject(controlAddProject);
 };
 
 init();

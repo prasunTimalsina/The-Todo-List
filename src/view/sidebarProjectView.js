@@ -37,7 +37,7 @@ class SidebarProjectView extends View {
               />
             </svg>
 
-            <p>${project.title}</p>
+            <p>${project.title[0].toUpperCase() + project.title.slice(1)}</p>
             <button class="delete-btn">
               <svg
                 class="delete-icon small-icon"
