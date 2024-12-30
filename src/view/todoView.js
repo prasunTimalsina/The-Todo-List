@@ -48,9 +48,9 @@ class TodoView extends View {
     return `${this._data
       .map(
         (todo) => `
-         <li class="todo  ${todo.completed ? "completed" : ""}" data-task-Id="${
-          todo.id
-        }" >
+         <li class="todo  ${todo.completed ? "completed" : ""} ${
+          this._checkOverdue(todo.dueDate) ? "overdue" : ""
+        }" data-task-Id="${todo.id}" >
             <div >
               <input id = "completeCheck" type="checkbox"  ${
                 todo.completed ? "checked" : ""
@@ -62,7 +62,7 @@ class TodoView extends View {
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               <p>${todo.dueDate}</p>
-              <p>${this._checkOverdue(todo.dueDate) ? "overdue !!" : ""}</p>
+              <p }>${this._checkOverdue(todo.dueDate) ? "overdue !!" : ""}</p>
             </div>
             <button class="delete-btn" data-task-Id="${todo.id}">
                 <svg class="delete-icon medium-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
