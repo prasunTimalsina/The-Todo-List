@@ -75,6 +75,5 @@ const presistProjects = function () {
 const init = function () {
   const storage = localStorage.getItem("projects");
   if (storage) state.projects = JSON.parse(storage);
-  console.log(state.projects);
 };
 init();
