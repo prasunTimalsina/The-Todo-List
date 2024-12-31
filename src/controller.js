@@ -32,6 +32,7 @@ const controlAddTodo = function (title, dueDate, project) {
 const controlAddProject = function (projectName) {
   const newProject = modal.createProject(projectName);
   addTaskView.addProjectOption(modal.state.projects);
+
   reRenderProject();
   reRenderProjectList();
 };
@@ -47,8 +48,10 @@ const controlDeleteTodo = function (Id, projectName) {
 
   // Re-attach event handlers for delete buttons
   todoView._addHandlerDelete(controlDeleteTodo);
+  /* 
+  //render taskremaining
+  renderTaskRemaining(); */
 };
-
 const controlDeleteProject = function (projectName) {
   projectName = projectName.toLowerCase();
 
@@ -76,6 +79,8 @@ const controlCompleteTodo = function (todoId) {
   });
 
   reRenderProject();
+
+  /*  renderTaskRemaining(); */
 };
 
 const controlShowForm = function () {
@@ -86,6 +91,19 @@ const controlShowForm = function () {
   return true;
 };
 
+// this should not be in this controller.js but i got to
+/* const renderTaskRemaining = function () {
+  let count = 0;
+  const taskRemaining = document.querySelector(".task-remaining span");
+  modal.state.projects.forEach((project) => {
+    project.todo.forEach((todo) => {
+      if (todo.completed === false) count++;
+    });
+  });
+
+  taskRemaining.textContent = count;
+}; */
+
 const init = function () {
   todoView._addHandlerDelete(controlDeleteTodo);
   sidebarProjectView._addHandlerDeleteProject(controlDeleteProject);
@@ -93,5 +111,7 @@ const init = function () {
   todoView.addHandlerCompleteTask(controlCompleteTodo);
   addTaskView._addHandlerAddTask(controlAddTodo);
   addTaskView._addHandlerShowForm(controlShowForm);
+
+  reRenderProject(modal.state.projects);
 };
 init();

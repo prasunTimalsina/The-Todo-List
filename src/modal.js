@@ -15,6 +15,7 @@ export const createProject = function (title) {
     todos: [],
   };
   state.projects.push(project);
+  presistProjects();
   return project;
 };
 
@@ -40,7 +41,7 @@ export const createTask = function (taskTitle, dueDate, projectName) {
     //add todo to project
     project.todos.push(todo);
   }
-
+  presistProjects();
   return todo;
 };
 
@@ -56,6 +57,7 @@ export const deleteTodo = function (projectName, Id) {
     (todo) => todo.id === Id
   );
   projects[projectIndex].todos.splice(todoIndexInProject, 1);
+  presistProjects();
 };
 
 export const deleteProject = function (projectName) {
@@ -63,4 +65,16 @@ export const deleteProject = function (projectName) {
     (project) => project.title === projectName
   );
   state.projects.splice(projectIndex, 1);
+  presistProjects();
 };
+
+const presistProjects = function () {
+  localStorage.setItem("projects", JSON.stringify(state.projects));
+};
+
+const init = function () {
+  const storage = localStorage.getItem("projects");
+  if (storage) state.projects = JSON.parse(storage);
+  console.log(state.projects);
+};
+init();
