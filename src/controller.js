@@ -53,15 +53,8 @@ const controlDeleteTodo = function (Id, projectName) {
   renderTaskRemaining(); */
 };
 const controlDeleteProject = function (projectName) {
-  projectName = projectName.toLowerCase();
+  modal.deleteProject(projectName);
 
-  //find Project Index
-  const index = modal.state.projects.findIndex(
-    (proejct) => proejct.title === projectName
-  );
-
-  //delete from state
-  modal.state.projects.splice(index, 1);
   console.log(modal.state.projects);
 
   reRenderProjectList();
@@ -113,5 +106,6 @@ const init = function () {
   addTaskView._addHandlerShowForm(controlShowForm);
 
   reRenderProject(modal.state.projects);
+  reRenderProjectList(modal.state.projects);
 };
 init();
